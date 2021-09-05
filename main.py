@@ -13,3 +13,10 @@ def render(board):  # gives an output of the board on the terminal
         print("|", board[row][2], "|")
         print(divider_string)
     print()
+
+def get_move():  # asks user to input co-ordinates and returns them
+    coordinates = (None, None)
+    x_coordinate = input("Enter the value for X co-ordinate: ")
+    y_coordinate = input("Enter the value for Y co-ordinate: ")
+    coordinates[0], coordinates[1] = x_coordinate, y_coordinate
+    return coordinates
