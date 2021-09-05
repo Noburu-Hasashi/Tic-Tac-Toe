@@ -1,4 +1,4 @@
-from main import new_board
+from main import new_board, get_move
 
 def test_new_board():
     expected_output = [
