@@ -20,3 +20,26 @@ def get_move():  # asks user to input co-ordinates and returns them
     y_coordinate = input("Enter the value for Y co-ordinate: ")
     coordinates[0], coordinates[1] = x_coordinate, y_coordinate
     return coordinates
+
+def is_valid_move(x_coordinate, y_coordinate, board):  # checks if the coordinates provided by the user are valid or not
+    if isinstance(x_coordinate, int) == True and isinstance(y_coordinate, int) == True:
+        if len(str(x_coordinate)) == 1 and len(str(y_coordinate)) == 1:
+            if board[x_coordinate][y_coordinate] == None:
+                return True
+            else:
+                return False
+        else:
+                return False
+    else:
+        return False
+
+def make_move(coordinates, board, player):  # makes a move by appending the board
+    while True:
+        if is_valid_move(coordinates[0], coordinates[1], board) == False:
+            print("- - -ERROR! INVALID INPUT! TRY AGAIN!- - -")
+            coordinates = get_move()
+        elif is_valid_move(coordinates[0], coordinates[1], board) == True:
+            break
+    x_coordinate, y_coordinate = coordinates[0], coordinates[1]
+    board[x_coordinate][y_coordinate] = player
+        
