@@ -26,12 +26,7 @@ def is_valid_move(x_coordinate, y_coordinate, board):  # checks if the coordinat
         if len(str(x_coordinate)) == 1 and len(str(y_coordinate)) == 1:
             if board[x_coordinate][y_coordinate] == None:
                 return True
-            else:
-                return False
-        else:
-                return False
-    else:
-        return False
+    return False
 
 def make_move(coordinates, board, player):  # makes a move by appending the board
     while True:
