@@ -37,4 +37,53 @@ def make_move(coordinates, board, player):  # makes a move by appending the boar
             break
     x_coordinate, y_coordinate = coordinates[0], coordinates[1]
     board[x_coordinate][y_coordinate] = player
-        
+
+def get_winner_from_XO_count(X_count, O_count):  # checks for the winner from both X_count and O_count
+    if X_count == 3:
+        return 'X'
+    elif O_count == 3:
+        return 'O'
+    else:
+        return None
+
+def get_updated_XO_count(X_count, O_count, board, x_coordinate, y_coordinate):  # checks board and returns updated X_count and O_count
+    if board[x_coordinate][y_coordinate] == 'X':
+        X_count += 1
+    elif board[x_coordinate][y_coordinate] == 'O':
+        O_count += 1
+    return X_count, O_count
+
+def get_winner_from_rows_and_columns(board, is_column, X_count, O_count):  # checks for winner in rows and columns and returns the winner
+    for row in range(3):
+        X_count = 0
+        O_count = 0
+        for column in range(3):
+            if is_column == False:
+                X_count, O_count = get_updated_XO_count(X_count, O_count, board, row, column)  # checks for 'X' or 'O' in the rows
+            elif is_column == True:
+                X_count, O_count = get_updated_XO_count(X_count, O_count, board, column, row)  # checks for 'X' or 'O' in the columns
+        if get_winner_from_XO_count(X_count, O_count) != None:
+            return get_winner_from_XO_count(X_count, O_count)
+    return None
+
+def get_winner_from_diagonals(board, X_count, O_count):  # checks for winner in the two diagonals and returns the winner
+    for i in range(3):
+            X_count, O_count = get_updated_XO_count(X_count, O_count, board, i, i)  # checks for winner in the forward diagonal
+    if get_winner_from_XO_count(X_count, O_count) == None:
+        X_count = 0
+        O_count = 0
+        for i in range(3):
+            X_count, O_count = get_updated_XO_count(X_count, O_count, board, i, 2-i)  # checks for winner in the backward diagonal
+    return get_winner_from_XO_count(X_count, O_count)
+
+def get_winner(board):  # checks for winner in the board and returns it
+    if get_winner_from_rows_and_columns(board, False, 0, 0) == None:  # checks all rows for winners
+        if get_winner_from_rows_and_columns(board, True, 0, 0) == None:  # checks all columns for winners
+            if get_winner_from_diagonals(board, 0, 0) == None:  # checks both diagonals for winners
+                return None
+            else:
+                return get_winner_from_diagonals(board, 0, 0)
+        else:
+            return get_winner_from_rows_and_columns(board, True, 0, 0)
+    else:
+        return get_winner_from_rows_and_columns(board, False, 0, 0)
