@@ -77,13 +77,15 @@ def get_winner_from_diagonals(board, X_count, O_count):  # checks for winner in 
     return get_winner_from_XO_count(X_count, O_count)
 
 def get_winner(board):  # checks for winner in the board and returns it
-    if get_winner_from_rows_and_columns(board, False, 0, 0) == None:  # checks all rows for winners
-        if get_winner_from_rows_and_columns(board, True, 0, 0) == None:  # checks all columns for winners
-            if get_winner_from_diagonals(board, 0, 0) == None:  # checks both diagonals for winners
-                return None
-            else:
-                return get_winner_from_diagonals(board, 0, 0)
-        else:
-            return get_winner_from_rows_and_columns(board, True, 0, 0)
-    else:
-        return get_winner_from_rows_and_columns(board, False, 0, 0)
+    row_result = get_winner_from_rows_and_columns(board, False, 0, 0)  # checks for winner in rows
+    column_result = get_winner_from_rows_and_columns(board, True, 0, 0)  # checks for winner in columns
+    diagonal_result = get_winner_from_diagonals(board, 0, 0)  # checks for winner in diagonals
+
+    if row_result != None:
+        return row_result
+    elif column_result != None:
+        return column_result
+    elif diagonal_result != None:
+        return diagonal_result
+
+    return None
