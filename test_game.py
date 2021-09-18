@@ -1,4 +1,4 @@
-from main import new_board, is_valid_move, get_winner_from_XO_count, get_updated_XO_count, get_winner_from_rows_and_columns, get_winner_from_diagonals, get_winner
+from game import new_board, is_valid_move, get_winner_from_XO_count, get_updated_XO_count, get_winner_from_rows_and_columns, get_winner_from_diagonals, get_winner
 
 
 def test_new_board():
