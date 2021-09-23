@@ -17,7 +17,6 @@ def test_is_valid_move():
         [None, 'O', None],
         ['X', None, 'X']
     ]
-    assert is_valid_move('X', 1, sample_board) == False
     assert is_valid_move(0, 1, sample_board) == True
     assert is_valid_move(0, 2, sample_board) == False
     assert is_valid_move(1, 1, sample_board) == False
