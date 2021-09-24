@@ -5,7 +5,7 @@ def copy_board(board):
     copy_board = new_board()
     for row in range(3):
         for column in range(3):
-            board[row][column] = copy_board[row][column]
+            copy_board[row][column] = board[row][column]
     return copy_board
 
 # finds a winning move for current player, if not found, it returns a random move
