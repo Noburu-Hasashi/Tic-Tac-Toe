@@ -20,7 +20,7 @@ def finds_winning_moves_ai(board, player):
                     coordinates = [row, column]
                     return coordinates
                 else:
-                    temporary_board[row][column] == None
+                    temporary_board[row][column] = None
     # below code runs if no winner is found by adding current player using the above method
     # returns None if no winning move is found
     return None
