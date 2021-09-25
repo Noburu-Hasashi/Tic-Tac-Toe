@@ -1,6 +1,25 @@
 from game import *
 import random
 
+def get_input_type():
+	while True:
+		try:
+			player_1_input = int(input('''Enter the number for the type of input for player 1 :
+	1. Asks user for input
+	2. Random AI
+	3. Winning AI'''))
+			if len(str(player_1_input)) != 1:
+				raise ValueError
+			player_2_input = int(input('''Enter the number for the type of input for player 2 :
+	1. Asks user for input
+	2. Random AI
+	3. Winning AI'''))
+			if len(str(player_2_input)) != 1:
+				raise ValueError
+		except(ValueError, TypeError, SyntaxError):
+			print("- - -ERROR! INVALID INPUT! TRY AGAIN!- - -")
+	return player_1_input, player_2_input
+
 board = new_board()  # constructs an empty board
 players = ['X', 'O']  # choses a random player to start the game
 current_player = players[random.randint(0, 1)]
