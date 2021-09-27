@@ -28,7 +28,7 @@ def get_input_type():
 
 def get_move_from_input_type(input_type_number, board, player):
 	if input_type_number == 1:
-		return get_move()
+		return human_player()
 	if input_type_number == 2:
 		return random_ai(board, player)
 	if input_type_number == 3:

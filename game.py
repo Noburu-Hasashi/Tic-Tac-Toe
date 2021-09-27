@@ -17,7 +17,7 @@ def render(board):  # gives an output of the board on the terminal
     print()
 
 
-def get_move():  # asks user to input co-ordinates and returns them
+def human_player():  # asks user to input co-ordinates and returns them
     coordinates = [None, None]
     while True:
         try:
@@ -44,7 +44,7 @@ def make_move(coordinates, board, player):  # makes a move by appending the boar
     while True:
         if is_valid_move(coordinates[0], coordinates[1], board) == False:
             print("- - -ERROR! INVALID INPUT! TRY AGAIN!- - -")
-            coordinates = get_move()
+            coordinates = human_player()
         elif is_valid_move(coordinates[0], coordinates[1], board) == True:
             break
     x_coordinate, y_coordinate = coordinates[0], coordinates[1]
